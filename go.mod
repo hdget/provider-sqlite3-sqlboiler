@@ -1,6 +1,6 @@
 module github.com/hdget/provider-sqlite3-sqlboiler
 
-go 1.23.7
+go 1.23.1
 
 require (
 	github.com/hdget/common v0.0.7
