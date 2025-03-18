@@ -1,4 +1,4 @@
-package sqlboiler_sqlite3
+package sqlite3_sqlboiler
 
 import (
 	"github.com/hdget/common/types"

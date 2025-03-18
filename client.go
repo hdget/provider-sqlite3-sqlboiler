@@ -1,4 +1,4 @@
-package sqlboiler_sqlite3
+package sqlite3_sqlboiler
 
 import (
 	"database/sql"
@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-type sqliteClient struct {
+type sqlite3Client struct {
 	*sql.DB
 }
 
@@ -54,21 +54,21 @@ func newClient(c *sqliteProviderConfig, args ...string) (intf.DbClient, error) {
 	// connection.go:173: driver: bad connection
 	db.SetConnMaxLifetime(3 * time.Minute)
 
-	return &sqliteClient{DB: db}, nil
+	return &sqlite3Client{DB: db}, nil
 }
 
-func (m sqliteClient) Close() error {
+func (m sqlite3Client) Close() error {
 	return m.DB.Close()
 }
 
-func (m sqliteClient) Get(dest interface{}, query string, args ...interface{}) error {
+func (m sqlite3Client) Get(dest interface{}, query string, args ...interface{}) error {
 	return nil
 }
 
-func (m sqliteClient) Select(dest interface{}, query string, args ...interface{}) error {
+func (m sqlite3Client) Select(dest interface{}, query string, args ...interface{}) error {
 	return nil
 }
 
-func (m sqliteClient) Rebind(query string) string {
+func (m sqlite3Client) Rebind(query string) string {
 	return ""
 }
