@@ -6,11 +6,11 @@ import (
 )
 
 type sqliteProviderConfig struct {
-	DbName string `mapstructure:"dbname"`
+	Database string `mapstructure:"db"`
 }
 
 const (
-	configSection = "sdk.sqlite3"
+	configSection = "sdk.sqlite"
 )
 
 var (
@@ -42,7 +42,7 @@ func newConfig(configProvider intf.ConfigProvider) (*sqliteProviderConfig, error
 }
 
 func (c *sqliteProviderConfig) validate() error {
-	if c == nil || c.DbName == "" {
+	if c == nil || c.Database == "" {
 		return errInvalidConfig
 	}
 	return nil
