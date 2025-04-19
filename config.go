@@ -6,7 +6,7 @@ import (
 )
 
 type sqliteProviderConfig struct {
-	Database string `mapstructure:"db"`
+	DbPath string `mapstructure:"db"`
 }
 
 const (
@@ -42,7 +42,7 @@ func newConfig(configProvider intf.ConfigProvider) (*sqliteProviderConfig, error
 }
 
 func (c *sqliteProviderConfig) validate() error {
-	if c == nil || c.Database == "" {
+	if c == nil || c.DbPath == "" {
 		return errInvalidConfig
 	}
 	return nil

@@ -26,7 +26,7 @@ func New(configProvider intf.ConfigProvider, logger intf.LoggerProvider) (intf.D
 	// 设置boil的缺省db
 	boil.SetDB(client)
 
-	logger.Debug("init sqlite3 provider", "db", config.Database)
+	logger.Debug("init sqlite3 provider", "db", config.DbPath)
 	return &sqlite3Provider{client: client}, nil
 }
 

@@ -25,11 +25,11 @@ func newClient(c *sqliteProviderConfig, args ...string) (intf.DbClient, error) {
 	if len(args) > 0 {
 		absDbFile = args[0]
 	} else {
-		if !filepath.IsAbs(c.Database) {
+		if !filepath.IsAbs(c.DbPath) {
 			workDir, _ := os.Getwd()
-			absDbFile = filepath.Join(workDir, c.Database)
+			absDbFile = filepath.Join(workDir, c.DbPath)
 		} else {
-			absDbFile = c.Database
+			absDbFile = c.DbPath
 		}
 	}
 
