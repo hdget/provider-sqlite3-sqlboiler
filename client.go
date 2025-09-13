@@ -3,11 +3,12 @@ package sqlite3_sqlboiler
 import (
 	"database/sql"
 	"fmt"
-	"github.com/hdget/common/intf"
-	_ "modernc.org/sqlite"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/hdget/common/types"
+	_ "modernc.org/sqlite"
 )
 
 type sqlite3Client struct {
@@ -20,7 +21,7 @@ const (
 	dsnTemplate = "file:%s?_loc=Local"
 )
 
-func newClient(c *sqliteProviderConfig, args ...string) (intf.DbClient, error) {
+func newClient(c *sqliteProviderConfig, args ...string) (types.DbClient, error) {
 	var absDbFile string
 	if len(args) > 0 {
 		absDbFile = args[0]

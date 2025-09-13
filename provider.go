@@ -2,17 +2,16 @@ package sqlite3_sqlboiler
 
 import (
 	"github.com/aarondl/sqlboiler/v4/boil"
-	"github.com/hdget/common/intf"
 	"github.com/hdget/common/types"
 	"github.com/pkg/errors"
 	_ "modernc.org/sqlite"
 )
 
 type sqlite3Provider struct {
-	client intf.DbClient
+	client types.DbClient
 }
 
-func New(configProvider intf.ConfigProvider, logger intf.LoggerProvider) (intf.DbProvider, error) {
+func New(configProvider types.ConfigProvider, logger types.LoggerProvider) (types.DbProvider, error) {
 	config, err := newConfig(configProvider)
 	if err != nil {
 		return nil, err
@@ -31,7 +30,7 @@ func New(configProvider intf.ConfigProvider, logger intf.LoggerProvider) (intf.D
 }
 
 // NewClient 从指定的文件创建创建数据库连接
-func NewClient(dbFile string) (intf.DbClient, error) {
+func NewClient(dbFile string) (types.DbClient, error) {
 	client, err := newClient(nil, dbFile)
 	if err != nil {
 		return nil, errors.Wrapf(err, "connect sqlite3: %s", dbFile)
@@ -46,18 +45,18 @@ func (p *sqlite3Provider) GetCapability() types.Capability {
 	return Capability
 }
 
-func (p *sqlite3Provider) My() intf.DbClient {
+func (p *sqlite3Provider) My() types.DbClient {
 	return p.client
 }
 
-func (p *sqlite3Provider) Master() intf.DbClient {
+func (p *sqlite3Provider) Master() types.DbClient {
 	return p.client
 }
 
-func (p *sqlite3Provider) Slave(i int) intf.DbClient {
+func (p *sqlite3Provider) Slave(i int) types.DbClient {
 	return p.client
 }
 
-func (p *sqlite3Provider) By(name string) intf.DbClient {
+func (p *sqlite3Provider) By(name string) types.DbClient {
 	return p.client
 }

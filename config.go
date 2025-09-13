@@ -1,7 +1,7 @@
 package sqlite3_sqlboiler
 
 import (
-	"github.com/hdget/common/intf"
+	"github.com/hdget/common/types"
 	"github.com/pkg/errors"
 )
 
@@ -18,7 +18,7 @@ var (
 	errEmptyConfig   = errors.New("empty config")
 )
 
-func newConfig(configProvider intf.ConfigProvider) (*sqliteProviderConfig, error) {
+func newConfig(configProvider types.ConfigProvider) (*sqliteProviderConfig, error) {
 	if configProvider == nil {
 		return nil, errInvalidConfig
 	}
